@@ -14,7 +14,7 @@ import {
   Typography
 } from '@mui/material'
 import { 
-  searchTeams, 
+  searchTeams,
   searchPlayer,
   searchLeagues
 } from './database'
@@ -88,7 +88,10 @@ function App() {
                 <Typography>Teams</Typography>
                 <Typography sx={{ fontSize: 10 }}>(by country)</Typography>
               </ToggleButton>
-              <ToggleButton value="player">Player</ToggleButton>
+              <ToggleButton value="player" sx={{ display: 'block' }}>
+                <Typography>Player</Typography>
+                <Typography sx={{ fontSize: 10 }}>(by name)</Typography>
+              </ToggleButton>
               <ToggleButton value="leagues" sx={{ display: 'block' }}>
                 <Typography>Leagues</Typography>
                 <Typography sx={{ fontSize: 10 }}>(by country)</Typography>

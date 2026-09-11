@@ -1,0 +1,21 @@
+body {
+  background-color: #ffffff;
+  color: #000;
+}
+
+h1 {
+  color: #000;
+}
+
+#search-section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin: 20px;
+}
+
+.team-list {
+  list-style-type: none;
+}

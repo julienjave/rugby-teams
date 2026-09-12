@@ -94,6 +94,11 @@ function App() {
     setLeagues(null)
   }
 
+  function clear() {
+    resetStates()
+    setSearchValue("")
+  }
+
   function resetSelected() {
     setTeamSelected(null)
     setPlayerSelected(null)
@@ -124,6 +129,12 @@ function App() {
   function handleFilter(e, newFilter) {
     if (newFilter !== null) {
       setFilter(newFilter)
+    }
+  }
+
+  function keyPressed(e) {
+    if (e.key === 'Enter') {
+      search(e)
     }
   }
 
@@ -163,12 +174,19 @@ function App() {
             variant="filled"
             value={searchValue} 
             onChange={(e) => setSearchValue(e.target.value)}
+            onKeyDown={keyPressed}
             fullWidth
           />
-          <Button 
-            variant='contained' 
-            onClick={search}
-          >Search</Button>
+          <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '20px' }}>
+            <Button 
+              variant='contained' 
+              onClick={search}
+            >Search</Button>
+            <Button 
+              variant='contained' 
+              onClick={clear}
+            >Reset</Button>
+          </Box>
         </Box>
 
         <Box id='result-section'
@@ -187,7 +205,7 @@ function App() {
             </List>
           )}
           {noSelection && players && players.length>0 && (
-            <List>
+            <List sx={{ backgroundColor: "#ffffffed", borderRadius: "15px", width: 1 }}>
               {players.map((person) => (
                 <ListItemButton key={person.idPlayer} onClick={() => setPlayerSelected(person)}>
                   <ListItemAvatar>
@@ -199,7 +217,7 @@ function App() {
             </List>
           )}
           {noSelection && leagues && leagues.length>0 && (
-            <List>
+            <List sx={{ backgroundColor: "#ffffffed", borderRadius: "15px", width: 1 }}>
               {leagues.map((league) => (
                 <ListItemButton key={league.idLeague} onClick={() => setLeagueSelected(league)}>
                   <ListItemAvatar>
